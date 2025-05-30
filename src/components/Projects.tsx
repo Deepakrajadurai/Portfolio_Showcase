@@ -6,31 +6,40 @@ import { Button } from '@/components/ui/button';
 const Projects = () => {
   const projects = [
     {
-      title: "Project Coming Soon",
-      description: "Exciting projects will be showcased here. Stay tuned for innovative web applications built with modern technologies.",
-      technologies: ["React", "Node.js", "MongoDB", "TailwindCSS"],
-      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500&h=300&fit=crop",
+      title: "VEHICLE BREAKDOWN ASSISTANCE SYSTEM",
+      description: "A comprehensive system designed to provide immediate assistance during vehicle breakdowns, featuring real-time location tracking and emergency response coordination.",
+      technologies: ["IoT", "GPS", "React", "Node.js"],
+      image: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=500&h=300&fit=crop",
       github: "#",
       live: "#",
-      status: "Coming Soon"
+      status: "Completed"
     },
     {
-      title: "Another Project",
-      description: "This space is reserved for another amazing project that demonstrates full-stack development capabilities.",
-      technologies: ["Python", "JavaScript", "SQL", "Git"],
-      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=500&h=300&fit=crop",
+      title: "INTELLIGENCE ADAPTIVE PARKING SYSTEM USING IOT",
+      description: "An intelligent parking management system that uses IoT sensors to optimize parking space allocation and provide real-time availability updates.",
+      technologies: ["IoT", "Python", "Sensors", "MongoDB"],
+      image: "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?w=500&h=300&fit=crop",
       github: "#",
       live: "#",
-      status: "In Development"
+      status: "Completed"
     },
     {
-      title: "Future Project",
-      description: "A placeholder for future innovative solutions that will showcase advanced programming skills and creativity.",
-      technologies: ["React", "Python", "Figma", "Node.js"],
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=300&fit=crop",
+      title: "RETRIEVAL-AUGMENTED GENERATION WITH REAL-TIME DATA",
+      description: "Advanced AI system implementing RAG architecture to provide accurate responses using real-time data retrieval and generation capabilities.",
+      technologies: ["Python", "AI/ML", "RAG", "API"],
+      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=500&h=300&fit=crop",
       github: "#",
       live: "#",
-      status: "Planned"
+      status: "Completed"
+    },
+    {
+      title: "HUMAN MACHINE INTERACTION PROJECT WITH REAL TIME ECONOMICS DATA",
+      description: "Interactive system facilitating seamless human-machine interaction while processing and displaying real-time economic data and market trends.",
+      technologies: ["JavaScript", "Real-time APIs", "Data Visualization", "UI/UX"],
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop",
+      github: "#",
+      live: "#",
+      status: "Completed"
     }
   ];
 
@@ -49,7 +58,7 @@ const Projects = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
           {projects.map((project, index) => (
             <div
               key={index}
@@ -63,9 +72,9 @@ const Projects = () => {
                 />
                 <div className="absolute top-4 right-4">
                   <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                    project.status === 'Coming Soon' ? 'bg-blue-500/20 text-blue-300' :
+                    project.status === 'Completed' ? 'bg-green-500/20 text-green-300' :
                     project.status === 'In Development' ? 'bg-yellow-500/20 text-yellow-300' :
-                    'bg-green-500/20 text-green-300'
+                    'bg-blue-500/20 text-blue-300'
                   }`}>
                     {project.status}
                   </span>
