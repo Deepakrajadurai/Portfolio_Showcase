@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ExternalLink, Github, Calendar, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -122,13 +121,19 @@ const Projects = () => {
           <p className="text-gray-400 mb-6">
             More exciting projects are in development. Check back soon for updates!
           </p>
-          <Button
-            variant="outline"
-            className="border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-gray-900"
+          <a
+            href="https://github.com/deepak-288"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <Github className="mr-2" size={20} />
-            View All Projects on GitHub
-          </Button>
+            <Button
+              variant="outline"
+              className="border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-gray-900"
+            >
+              <Github className="mr-2" size={20} />
+              View All Projects on GitHub
+            </Button>
+          </a>
         </div>
       </div>
     </section>
