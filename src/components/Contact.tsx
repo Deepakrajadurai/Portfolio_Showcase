@@ -1,9 +1,9 @@
-
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { useToast } from '@/hooks/use-toast';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +12,7 @@ const Contact = () => {
     subject: '',
     message: ''
   });
+  const { toast } = useToast();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -22,8 +23,39 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
+    
+    // Create email content
+    const emailSubject = encodeURIComponent(`Portfolio Contact: ${formData.subject}`);
+    const emailBody = encodeURIComponent(
+      `Name: ${formData.name}\n` +
+      `Email: ${formData.email}\n` +
+      `Subject: ${formData.subject}\n\n` +
+      `Message:\n${formData.message}\n\n` +
+      `---\n` +
+      `Sent from portfolio contact form`
+    );
+    
+    // Create mailto link
+    const mailtoLink = `mailto:deepak.rajadurai@example.com?subject=${emailSubject}&body=${emailBody}`;
+    
+    // Open email client
+    window.location.href = mailtoLink;
+    
+    // Show success toast
+    toast({
+      title: "Email Client Opened",
+      description: "Your default email client should open with the message pre-filled. Please send the email to complete your message submission.",
+    });
+    
+    // Clear form
+    setFormData({
+      name: '',
+      email: '',
+      subject: '',
+      message: ''
+    });
+    
+    console.log('Form submitted via email:', formData);
   };
 
   const contactInfo = [
