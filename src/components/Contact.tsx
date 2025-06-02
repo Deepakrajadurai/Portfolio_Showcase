@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/lib/supabase';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +13,7 @@ const Contact = () => {
     subject: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -21,41 +23,55 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
     
-    // Create email content
-    const emailSubject = encodeURIComponent(`Portfolio Contact: ${formData.subject}`);
-    const emailBody = encodeURIComponent(
-      `Name: ${formData.name}\n` +
-      `Email: ${formData.email}\n` +
-      `Subject: ${formData.subject}\n\n` +
-      `Message:\n${formData.message}\n\n` +
-      `---\n` +
-      `Sent from portfolio contact form`
-    );
-    
-    // Create mailto link
-    const mailtoLink = `mailto:deepak.rajadurai@example.com?subject=${emailSubject}&body=${emailBody}`;
-    
-    // Open email client
-    window.location.href = mailtoLink;
-    
-    // Show success toast
-    toast({
-      title: "Email Client Opened",
-      description: "Your default email client should open with the message pre-filled. Please send the email to complete your message submission.",
-    });
-    
-    // Clear form
-    setFormData({
-      name: '',
-      email: '',
-      subject: '',
-      message: ''
-    });
-    
-    console.log('Form submitted via email:', formData);
+    try {
+      // Insert the form data into Supabase
+      const { data, error } = await supabase
+        .from('contact_messages')
+        .insert([
+          {
+            name: formData.name,
+            email: formData.email,
+            subject: formData.subject,
+            message: formData.message,
+            created_at: new Date().toISOString()
+          }
+        ]);
+
+      if (error) {
+        throw error;
+      }
+
+      // Show success toast
+      toast({
+        title: "Message Sent Successfully!",
+        description: "Thank you for your message. I'll get back to you soon.",
+      });
+      
+      // Clear form
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
+      
+      console.log('Message stored in database:', data);
+    } catch (error) {
+      console.error('Error storing message:', error);
+      
+      // Show error toast
+      toast({
+        title: "Error Sending Message",
+        description: "Something went wrong. Please try again later.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -147,6 +163,7 @@ const Contact = () => {
                   className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-400 focus:border-purple-400"
                   placeholder="Your Name"
                   required
+                  disabled={isSubmitting}
                 />
               </div>
               <div>
@@ -160,6 +177,7 @@ const Contact = () => {
                   className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-400 focus:border-purple-400"
                   placeholder="your@email.com"
                   required
+                  disabled={isSubmitting}
                 />
               </div>
             </div>
@@ -175,6 +193,7 @@ const Contact = () => {
                 className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-400 focus:border-purple-400"
                 placeholder="What's this about?"
                 required
+                disabled={isSubmitting}
               />
             </div>
 
@@ -189,15 +208,17 @@ const Contact = () => {
                 className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-400 focus:border-purple-400 resize-none"
                 placeholder="Tell me about your project or inquiry..."
                 required
+                disabled={isSubmitting}
               />
             </div>
 
             <Button
               type="submit"
-              className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white py-3 transition-all duration-300 transform hover:scale-105"
+              disabled={isSubmitting}
+              className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white py-3 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
             >
               <Send className="mr-2" size={20} />
-              Send Message
+              {isSubmitting ? 'Sending...' : 'Send Message'}
             </Button>
           </form>
         </div>
