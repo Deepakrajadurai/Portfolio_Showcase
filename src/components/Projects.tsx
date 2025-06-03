@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { ExternalLink, Github, Calendar, Users } from 'lucide-react';
+import { Github } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Projects = () => {
@@ -9,8 +10,7 @@ const Projects = () => {
       description: "A comprehensive system designed to provide immediate assistance during vehicle breakdowns, featuring real-time location tracking and emergency response coordination.",
       technologies: ["IoT", "GPS", "React", "Node.js"],
       image: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=500&h=300&fit=crop",
-      github: "#",
-      live: "#",
+      github: "https://github.com/deepak-288",
       status: "Completed"
     },
     {
@@ -18,8 +18,7 @@ const Projects = () => {
       description: "An intelligent parking management system that uses IoT sensors to optimize parking space allocation and provide real-time availability updates.",
       technologies: ["IoT", "Python", "Sensors", "MongoDB"],
       image: "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?w=500&h=300&fit=crop",
-      github: "#",
-      live: "#",
+      github: "https://github.com/deepak-288",
       status: "Completed"
     },
     {
@@ -27,8 +26,7 @@ const Projects = () => {
       description: "Advanced AI system implementing RAG architecture to provide accurate responses using real-time data retrieval and generation capabilities.",
       technologies: ["Python", "AI/ML", "RAG", "API"],
       image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=500&h=300&fit=crop",
-      github: "#",
-      live: "#",
+      github: "https://github.com/deepak-288",
       status: "Completed"
     },
     {
@@ -36,8 +34,7 @@ const Projects = () => {
       description: "Interactive system facilitating seamless human-machine interaction while processing and displaying real-time economic data and market trends.",
       technologies: ["JavaScript", "Real-time APIs", "Data Visualization", "UI/UX"],
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop",
-      github: "#",
-      live: "#",
+      github: "https://github.com/deepak-288",
       status: "Completed"
     }
   ];
@@ -96,21 +93,21 @@ const Projects = () => {
                 </div>
                 
                 <div className="flex gap-4">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="border-gray-600 text-gray-300 hover:bg-gray-700 flex-1"
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1"
                   >
-                    <Github className="mr-2" size={16} />
-                    Code
-                  </Button>
-                  <Button
-                    size="sm"
-                    className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 flex-1"
-                  >
-                    <ExternalLink className="mr-2" size={16} />
-                    Live Demo
-                  </Button>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="border-gray-600 text-gray-300 hover:bg-gray-700 w-full"
+                    >
+                      <Github className="mr-2" size={16} />
+                      View Code
+                    </Button>
+                  </a>
                 </div>
               </div>
             </div>

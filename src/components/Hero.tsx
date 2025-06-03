@@ -33,27 +33,33 @@ const Hero = () => {
         </div>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-12">
-          <Button variant="outline" className="border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-gray-900 px-8 py-3 rounded-full transition-all duration-300">
-            <Mail className="mr-2" size={20} />
-            Get In Touch
-          </Button>
+          <a href="#contact">
+            <Button variant="outline" className="border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-gray-900 px-8 py-3 rounded-full transition-all duration-300">
+              <Mail className="mr-2" size={20} />
+              Get In Touch
+            </Button>
+          </a>
         </div>
 
         <div className="flex justify-center space-x-6">
           <a
-            href="#"
+            href="https://github.com/deepak-288"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-gray-400 hover:text-purple-400 transition-colors duration-300 transform hover:scale-110"
           >
             <Github size={28} />
           </a>
           <a
-            href="#"
+            href="https://www.linkedin.com/in/deepak-rajadurai/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-gray-400 hover:text-blue-400 transition-colors duration-300 transform hover:scale-110"
           >
             <Linkedin size={28} />
           </a>
           <a
-            href="#"
+            href="mailto:deepakrajadurai343@gmail.com"
             className="text-gray-400 hover:text-pink-400 transition-colors duration-300 transform hover:scale-110"
           >
             <Mail size={28} />

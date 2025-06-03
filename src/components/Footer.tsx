@@ -34,19 +34,23 @@ const Footer = () => {
             <h4 className="text-lg font-semibold text-white mb-4">Connect With Me</h4>
             <div className="flex space-x-4 mb-4">
               <a
-                href="#"
+                href="https://github.com/deepak-288"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-400 hover:text-purple-400 transition-colors transform hover:scale-110"
               >
                 <Github size={24} />
               </a>
               <a
-                href="#"
+                href="https://www.linkedin.com/in/deepak-rajadurai/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-400 hover:text-blue-400 transition-colors transform hover:scale-110"
               >
                 <Linkedin size={24} />
               </a>
               <a
-                href="#"
+                href="mailto:deepakrajadurai343@gmail.com"
                 className="text-gray-400 hover:text-pink-400 transition-colors transform hover:scale-110"
               >
                 <Mail size={24} />
