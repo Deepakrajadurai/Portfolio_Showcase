@@ -1,17 +1,29 @@
+
 import React from 'react';
 import { Github, Linkedin, Mail, Heart } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
+  const handleNameClick = () => {
+    // Scroll to top/home section
+    const homeSection = document.getElementById('home');
+    if (homeSection) {
+      homeSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <footer className="py-12 px-6 border-t border-gray-800">
       <div className="container mx-auto">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           <div>
-            <h3 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-4">
+            <button
+              onClick={handleNameClick}
+              className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-4 hover:scale-105 transition-transform duration-300 cursor-pointer"
+            >
               Deepak Rajadurai
-            </h3>
+            </button>
             <p className="text-gray-300 leading-relaxed">
               Full-Stack Developer passionate about creating innovative web solutions 
               and bringing ideas to life through code.

@@ -13,13 +13,26 @@ const Header = () => {
     { href: '#contact', label: 'Contact' },
   ];
 
+  const handleNameClick = () => {
+    // Scroll to top/home section
+    const homeSection = document.getElementById('home');
+    if (homeSection) {
+      homeSection.scrollIntoView({ behavior: 'smooth' });
+    }
+    // Close mobile menu if open
+    setIsMenuOpen(false);
+  };
+
   return (
     <header className="fixed top-0 w-full bg-gray-900/95 backdrop-blur-sm border-b border-gray-800 z-50">
       <nav className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <div className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+          <button
+            onClick={handleNameClick}
+            className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300 cursor-pointer"
+          >
             Deepak Rajadurai
-          </div>
+          </button>
           
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8">
