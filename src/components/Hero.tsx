@@ -9,10 +9,12 @@ const Hero = () => {
       <div className="container mx-auto text-center">
         <div className="mb-8 animate-fade-in">
           <div className="w-48 h-48 mx-auto mb-8 rounded-full bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 p-1">
-            <div className="w-full h-full rounded-full bg-gray-900 flex items-center justify-center">
-              <span className="text-6xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                DR
-              </span>
+            <div className="w-full h-full rounded-full overflow-hidden">
+              <img 
+                src="/lovable-uploads/fcdae278-5761-4ce6-bb85-a5c90880af77.png" 
+                alt="Deepak Rajadurai"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
           
