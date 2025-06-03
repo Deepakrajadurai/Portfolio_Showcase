@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Github, Linkedin, Mail, Heart } from 'lucide-react';
 
@@ -66,9 +65,6 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row items-center justify-between">
             <p className="text-gray-400 text-sm mb-4 md:mb-0">
               © {currentYear} Deepak Rajadurai. All rights reserved.
-            </p>
-            <p className="text-gray-400 text-sm flex items-center">
-              Made with <Heart className="mx-1 text-red-400" size={16} /> and lots of coffee
             </p>
           </div>
         </div>
